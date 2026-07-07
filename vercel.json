@@ -6,13 +6,12 @@
     },
     "backend": {
       "root": "backend",
-      "runtime": "node",
       "entrypoint": "api/index.js"
     }
   },
   "rewrites": [
     {
-      "source": "/api(/.*)?",
+      "source": "/api/(.*)",
       "destination": {
         "type": "service",
         "service": "backend"
