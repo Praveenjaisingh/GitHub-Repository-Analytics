@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-950 text-mist-100 antialiased;
+  background-image: radial-gradient(circle at 20% 0%, rgba(242, 166, 90, 0.08), transparent 45%);
+}
+
+::selection {
+  background: #f2a65a;
+  color: #12161d;
+}
+
+/* thin scrollbar for a tool-like feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #333c4a;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.commit-rail {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #333c4a 0,
+    #333c4a 4px,
+    transparent 4px,
+    transparent 10px
+  );
+}
