@@ -2,6 +2,10 @@ const jwt = require('jsonwebtoken');
 const AppError = require('../utils/appError');
 const { User } = require('../models');
 
+/**
+ * Requires a valid JWT (issued after GitHub OAuth login).
+ * Attaches the authenticated user to req.user.
+ */
 const requireAuth = async (req, res, next) => {
   try {
     const header = req.headers.authorization || '';

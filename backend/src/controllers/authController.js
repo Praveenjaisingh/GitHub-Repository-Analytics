@@ -9,7 +9,9 @@ const signToken = (userId) =>
     expiresIn: process.env.JWT_EXPIRES_IN || '7d',
   });
 
-
+/**
+ * Step 1: redirect the browser to GitHub's OAuth consent screen.
+ */
 exports.redirectToGithub = (req, res) => {
   const params = new URLSearchParams({
     client_id: process.env.GITHUB_CLIENT_ID,
@@ -19,7 +21,11 @@ exports.redirectToGithub = (req, res) => {
   res.redirect(`https://github.com/login/oauth/authorize?${params.toString()}`);
 };
 
-
+/**
+ * Step 2: GitHub redirects back here with a ?code=... param.
+ * Exchange it for an access token, upsert the user, issue our own JWT,
+ * then redirect to the frontend with the token.
+ */
 exports.githubCallback = asyncHandler(async (req, res) => {
   const { code } = req.query;
   if (!code) throw new AppError('Missing OAuth code from GitHub', 400);
@@ -62,5 +68,6 @@ exports.getCurrentUser = asyncHandler(async (req, res) => {
 });
 
 exports.logout = (req, res) => {
+  // JWTs are stateless; logout is handled client-side by discarding the token.
   res.status(200).json({ status: true, message: 'Logged out' });
 };
