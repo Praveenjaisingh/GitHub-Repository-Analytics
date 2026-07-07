@@ -1,4 +1,11 @@
 const { Sequelize } = require('sequelize');
+// Sequelize loads the 'pg' driver with a *dynamic* require() based on the
+// dialect string. Vercel's build-time file tracer can't follow dynamic
+// requires, so 'pg' silently gets left out of the deployed function bundle
+// even though it's a listed dependency — causing "Please install pg
+// package manually" at runtime. Requiring it here statically, and passing
+// it in via `dialectModule`, forces the tracer to include it.
+const pg = require('pg');
 const logger = require('./logger');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -25,6 +32,7 @@ const poolOptions = isProd
 const sequelize = useConnectionString
   ? new Sequelize(process.env.DATABASE_URL, {
       dialect: 'postgres',
+      dialectModule: pg,
       logging: false,
       dialectOptions: sslOptions,
       pool: poolOptions,
@@ -37,6 +45,7 @@ const sequelize = useConnectionString
         host: process.env.DB_HOST || '127.0.0.1',
         port: Number(process.env.DB_PORT) || 5432,
         dialect: process.env.DB_DIALECT || 'postgres',
+        dialectModule: pg,
         logging: false,
         dialectOptions: sslOptions,
         pool: poolOptions,
