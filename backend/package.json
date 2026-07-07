@@ -11,7 +11,12 @@
     "test": "cross-env NODE_ENV=test jest --runInBand",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage --runInBand"
   },
-  "keywords": ["github", "analytics", "dashboard", "express"],
+  "keywords": [
+    "github",
+    "analytics",
+    "dashboard",
+    "express"
+  ],
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
@@ -29,7 +34,7 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "pdfkit": "^0.15.1",
-    "pg": "^8.13.1",
+    "pg": "^8.22.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.5",
     "swagger-jsdoc": "^6.2.4",
