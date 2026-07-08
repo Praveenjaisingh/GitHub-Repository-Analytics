@@ -12,13 +12,29 @@ const signToken = (userId) =>
 /**
  * Step 1: redirect the browser to GitHub's OAuth consent screen.
  */
+// exports.redirectToGithub = (req, res) => {
+//   const params = new URLSearchParams({
+//     client_id: process.env.GITHUB_CLIENT_ID,
+//     redirect_uri: process.env.GITHUB_CALLBACK_URL,
+//     scope: 'read:user repo',
+//   });
+//   res.redirect(`https://github.com/login/oauth/authorize?${params.toString()}`);
+// };
+
 exports.redirectToGithub = (req, res) => {
+  console.log("Callback URL:", process.env.GITHUB_CALLBACK_URL);
+
   const params = new URLSearchParams({
     client_id: process.env.GITHUB_CLIENT_ID,
     redirect_uri: process.env.GITHUB_CALLBACK_URL,
-    scope: 'read:user repo',
+    scope: "read:user repo",
   });
-  res.redirect(`https://github.com/login/oauth/authorize?${params.toString()}`);
+
+  console.log(params.toString());
+
+  res.redirect(
+    `https://github.com/login/oauth/authorize?${params.toString()}`
+  );
 };
 
 /**
