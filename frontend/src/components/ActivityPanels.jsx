@@ -4,7 +4,7 @@ export function IssuesPanel({ issues }) {
   if (!issues) return null;
   return (
     <div>
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
         <StatCard label="Total" value={issues.total} />
         <StatCard label="Open" value={issues.open} accent />
         <StatCard label="Closed" value={issues.closed} />
@@ -28,7 +28,7 @@ export function IssuesPanel({ issues }) {
 export function PullsPanel({ pulls }) {
   if (!pulls) return null;
   return (
-    <div className="grid grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 gap-2 xs:grid-cols-4 sm:gap-3">
       <StatCard label="Total" value={pulls.total} />
       <StatCard label="Open" value={pulls.open} accent />
       <StatCard label="Merged" value={pulls.merged} />
@@ -47,15 +47,15 @@ export function ReleasesPanel({ releases }) {
       {releases.history.slice(0, 6).map((r) => (
         <li
           key={r.tag_name}
-          className="flex items-center justify-between rounded-lg border border-ink-700 bg-ink-900 px-4 py-3"
+          className="flex flex-col gap-1 rounded-lg border border-ink-700 bg-ink-900 px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-0"
         >
-          <div>
+          <div className="min-w-0">
             <a href={r.html_url} target="_blank" rel="noreferrer" className="font-mono text-sm text-amber-400">
               {r.tag_name}
             </a>
-            <p className="text-xs text-mist-500">{r.name || 'Untitled release'}</p>
+            <p className="truncate text-xs text-mist-500">{r.name || 'Untitled release'}</p>
           </div>
-          <span className="font-mono text-xs text-mist-500">
+          <span className="shrink-0 font-mono text-xs text-mist-500">
             {r.published_at ? new Date(r.published_at).toLocaleDateString() : 'unpublished'}
           </span>
         </li>

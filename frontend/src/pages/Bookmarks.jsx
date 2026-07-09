@@ -36,11 +36,11 @@ export default function Bookmarks() {
         <EmptyState title="No bookmarks yet" description="Bookmark a repository from its detail page." />
       )}
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-3">
         {data?.map((b) => (
           <div
             key={b.id}
-            className="flex flex-col gap-3 rounded-xl border border-ink-700 bg-ink-900 p-5"
+            className="flex flex-col gap-3 rounded-xl border border-ink-700 bg-ink-900 p-4 transition duration-200 hover:-translate-y-0.5 hover:border-amber-500/40 sm:p-5"
           >
             <div className="flex items-center gap-3">
               <img src={b.Repository?.avatar} alt="" className="h-9 w-9 rounded-md" />

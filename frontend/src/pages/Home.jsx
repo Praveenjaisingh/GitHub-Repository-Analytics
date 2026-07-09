@@ -35,14 +35,14 @@ export default function Home() {
 
   return (
     <div className="flex flex-col gap-10">
-      <div className="flex flex-col items-center gap-6 pb-4 pt-10 text-center">
-        <span className="rounded-full border border-ink-600 px-3 py-1 font-mono text-xs text-mist-500">
+      <div className="flex flex-col items-center gap-5 pb-4 pt-6 text-center sm:gap-6 sm:pt-10">
+        <span className="rounded-full border border-ink-600 px-3 py-1 font-mono text-[11px] text-mist-500 sm:text-xs">
           v1.0 · powered by the GitHub REST API
         </span>
-        <h1 className="font-display text-4xl font-semibold text-mist-100 sm:text-5xl">
+        <h1 className="font-display text-3xl font-semibold leading-tight text-mist-100 xs:text-4xl sm:text-5xl">
           Understand any repo <span className="text-amber-400">at a glance.</span>
         </h1>
-        <p className="max-w-xl text-mist-300">
+        <p className="max-w-xl px-2 text-sm text-mist-300 sm:text-base">
           Search a keyword or paste an <code className="font-mono text-amber-400">owner/repo</code> to pull
           contributors, commit activity, languages, issues, and a computed health score.
         </p>
@@ -63,7 +63,7 @@ export default function Home() {
               <p className="mb-4 font-mono text-xs text-mist-500">
                 {data.total_count.toLocaleString()} results
               </p>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-3">
                 {data.items.map((repo) => (
                   <RepositoryCard key={repo.id} repo={repo} />
                 ))}
@@ -72,14 +72,14 @@ export default function Home() {
                 <button
                   disabled={page <= 1}
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
-                  className="rounded-lg border border-ink-600 px-4 py-2 font-mono text-xs text-mist-300 disabled:opacity-30"
+                  className="rounded-lg border border-ink-600 px-3 py-2 font-mono text-xs text-mist-300 transition hover:border-amber-500 disabled:opacity-30 disabled:hover:border-ink-600 sm:px-4"
                 >
                   ← prev
                 </button>
                 <span className="px-2 py-2 font-mono text-xs text-mist-500">page {page}</span>
                 <button
                   onClick={() => setPage((p) => p + 1)}
-                  className="rounded-lg border border-ink-600 px-4 py-2 font-mono text-xs text-mist-300"
+                  className="rounded-lg border border-ink-600 px-3 py-2 font-mono text-xs text-mist-300 transition hover:border-amber-500 sm:px-4"
                 >
                   next →
                 </button>

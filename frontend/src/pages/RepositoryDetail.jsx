@@ -62,14 +62,16 @@ export default function RepositoryDetail() {
   };
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6 sm:gap-8">
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-        <div className="flex items-start gap-4">
-          <img src={data.avatar} alt={data.owner} className="h-14 w-14 rounded-lg" />
-          <div>
-            <p className="font-mono text-sm text-mist-500">{data.owner}</p>
-            <h1 className="font-display text-2xl font-semibold text-mist-100">{data.name}</h1>
+        <div className="flex items-start gap-3 sm:gap-4">
+          <img src={data.avatar} alt={data.owner} className="h-11 w-11 shrink-0 rounded-lg sm:h-14 sm:w-14" />
+          <div className="min-w-0">
+            <p className="truncate font-mono text-xs text-mist-500 sm:text-sm">{data.owner}</p>
+            <h1 className="break-words font-display text-xl font-semibold text-mist-100 sm:text-2xl">
+              {data.name}
+            </h1>
             <p className="mt-1 max-w-xl text-sm text-mist-300">{data.description}</p>
             <div className="mt-2 flex flex-wrap gap-2">
               {data.topics?.slice(0, 6).map((t) => (
@@ -86,7 +88,7 @@ export default function RepositoryDetail() {
             <button
               onClick={handleBookmark}
               disabled={bookmarking || bookmarked}
-              className="rounded-lg border border-ink-600 px-4 py-2 font-mono text-xs text-mist-300 transition hover:border-amber-500 disabled:opacity-50"
+              className="flex-1 rounded-lg border border-ink-600 px-4 py-2 font-mono text-xs text-mist-300 transition hover:border-amber-500 disabled:opacity-50 sm:flex-none"
             >
               {bookmarked ? '★ bookmarked' : '☆ bookmark'}
             </button>
@@ -95,7 +97,7 @@ export default function RepositoryDetail() {
             href={data.html_url}
             target="_blank"
             rel="noreferrer"
-            className="rounded-lg border border-ink-600 px-4 py-2 font-mono text-xs text-mist-300 transition hover:border-amber-500"
+            className="flex-1 rounded-lg border border-ink-600 px-4 py-2 text-center font-mono text-xs text-mist-300 transition hover:border-amber-500 sm:flex-none"
           >
             view on GitHub ↗
           </a>
@@ -103,7 +105,7 @@ export default function RepositoryDetail() {
       </div>
 
       {/* Stats row */}
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6">
+      <div className="grid grid-cols-2 gap-3 xs:grid-cols-3 sm:grid-cols-4 lg:grid-cols-6">
         <StatCard label="Stars" value={numberFmt(data.stars)} accent />
         <StatCard label="Forks" value={numberFmt(data.forks)} />
         <StatCard label="Watchers" value={numberFmt(data.watchers)} />

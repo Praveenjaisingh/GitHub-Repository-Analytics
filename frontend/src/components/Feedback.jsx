@@ -1,9 +1,9 @@
 export function StatCard({ label, value, accent = false }) {
   return (
-    <div className="rounded-xl border border-ink-700 bg-ink-900 p-4">
-      <p className="font-mono text-xs uppercase tracking-wide text-mist-500">{label}</p>
+    <div className="rounded-xl border border-ink-700 bg-ink-900 p-3 transition hover:border-ink-600 sm:p-4">
+      <p className="truncate font-mono text-[10px] uppercase tracking-wide text-mist-500 sm:text-xs">{label}</p>
       <p
-        className={`mt-1 font-display text-2xl font-semibold ${
+        className={`mt-1 truncate font-display text-xl font-semibold sm:text-2xl ${
           accent ? 'text-amber-400' : 'text-mist-100'
         }`}
       >

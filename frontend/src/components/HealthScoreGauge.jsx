@@ -10,8 +10,8 @@ export default function HealthScoreGauge({ health }) {
 
   return (
     <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-start">
-      <div className="relative flex h-44 w-44 shrink-0 items-center justify-center">
-        <svg viewBox="0 0 160 160" className="h-44 w-44 -rotate-90">
+      <div className="relative flex h-36 w-36 shrink-0 items-center justify-center sm:h-44 sm:w-44">
+        <svg viewBox="0 0 160 160" className="h-36 w-36 -rotate-90 sm:h-44 sm:w-44">
           <circle cx="80" cy="80" r={RADIUS} fill="none" stroke="#262D39" strokeWidth="10" />
           <circle
             cx="80"
@@ -27,7 +27,7 @@ export default function HealthScoreGauge({ health }) {
           />
         </svg>
         <div className="absolute flex flex-col items-center">
-          <span className="font-display text-4xl font-bold text-mist-100">{score}</span>
+          <span className="font-display text-3xl font-bold text-mist-100 sm:text-4xl">{score}</span>
           <span className="font-mono text-xs text-mist-500">/ 100</span>
           <span className="mt-1 font-mono text-sm" style={{ color }}>
             {'★'.repeat(rating)}

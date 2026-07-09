@@ -10,7 +10,7 @@ export default function RepositoryCard({ repo }) {
   return (
     <Link
       to={`/repo/${repo.owner}/${repo.name}`}
-      className="group flex flex-col gap-3 rounded-xl border border-ink-700 bg-ink-900 p-5 transition hover:border-amber-500/60 hover:bg-ink-800"
+      className="group flex flex-col gap-3 rounded-xl border border-ink-700 bg-ink-900 p-4 transition duration-200 hover:-translate-y-0.5 hover:border-amber-500/60 hover:bg-ink-800 hover:shadow-lg hover:shadow-amber-500/5 sm:p-5"
     >
       <div className="flex items-center gap-3">
         <img src={repo.avatar} alt={repo.owner} className="h-9 w-9 rounded-md" />

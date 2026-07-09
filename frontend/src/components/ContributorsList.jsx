@@ -8,14 +8,14 @@ export default function ContributorsList({ contributors }) {
   return (
     <ul className="space-y-3">
       {contributors.slice(0, 10).map((c, i) => (
-        <li key={c.login} className="flex items-center gap-3">
-          <span className="w-5 font-mono text-xs text-mist-500">{i + 1}</span>
-          <img src={c.avatar} alt={c.login} className="h-8 w-8 rounded-full" />
+        <li key={c.login} className="flex items-center gap-2 sm:gap-3">
+          <span className="w-4 shrink-0 font-mono text-xs text-mist-500 sm:w-5">{i + 1}</span>
+          <img src={c.avatar} alt={c.login} className="h-7 w-7 shrink-0 rounded-full sm:h-8 sm:w-8" />
           <a
             href={c.html_url}
             target="_blank"
             rel="noreferrer"
-            className="w-28 shrink-0 truncate text-sm text-mist-100 hover:text-amber-400"
+            className="w-16 shrink-0 truncate text-sm text-mist-100 hover:text-amber-400 xs:w-24 sm:w-28"
           >
             {c.login}
           </a>
@@ -25,7 +25,7 @@ export default function ContributorsList({ contributors }) {
               style={{ width: `${(c.contributions / max) * 100}%` }}
             />
           </div>
-          <span className="w-14 shrink-0 text-right font-mono text-xs text-mist-500">
+          <span className="w-10 shrink-0 text-right font-mono text-xs text-mist-500 sm:w-14">
             {c.contributions}
           </span>
         </li>
